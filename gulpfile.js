@@ -69,16 +69,22 @@ gulp.task('bump', function () {
     .pipe(gulp.dest('./'));
 });
 
-gulp.task('tag', ['build'], function () {
+gulp.task('tag', ['build'], function (cb) {
   var pkg = require('./package.json');
   var v = 'v' + pkg.version;
   var message = 'Release ' + v;
 
-  return gulp.src('./')
+  gulp.src('./')
     .pipe(git.commit(message))
-    .pipe(git.tag(v, message))
-    .pipe(git.push('origin', 'master', '--tags'))
-    .pipe(gulp.dest('./'));
+    .pipe(gulp.dest('./'))
+    .on('end', tag);
+
+  function tag () {
+    git
+      .tag(v, message)
+      .push('origin', 'master', '--tags')
+      .end();
+  }
 });
 
 gulp.task('npm', ['tag'], function (done) {
