@@ -27,6 +27,10 @@ flexarea(textarea);
 
 You'll get a nice little resizer. Remember to include the CSS in your styles!
 
+![flexarea.png][1]
+
 # License
 
 MIT
+
+  [1]: http://i.imgur.com/ZWpAHu1.png

@@ -4,19 +4,27 @@ c-strong = #412917
 c-border = #cbc5c0
 c-gray = #dedede
 
-.fa-grip
+.fa-grip,
+.fa-grip:before,
+.fa-grip:after
   background-color c-background
   border-color c-gray
   border-style solid
   border-width 0pt 1px 1px
   cursor s-resize
-  height 9px
   overflow hidden
 
-  &:active
-    border-color c-border
+.fa-grip
+  height 9px
+
+.fa-grip:before,
+.fa-grip:after
+  height 3px
+  display block
+  content ''
+
+.fa-textarea
+  resize none
 
 .fa-textarea-resizing
-  color c-white
-  background-color c-strong
-  opacity 0.5
+  opacity 0.75

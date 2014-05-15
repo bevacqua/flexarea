@@ -1,3 +1,7 @@
+# v1.0.24
+
+- Styling changes
+
 # v1.0.22
 
 Fixes
