@@ -81,7 +81,7 @@ gulp.task('tag', ['build'], function () {
 
   function tag () {
     git.tag(v, message);
-    git.push('origin', 'master', '--tags').end();
+    git.push('origin', 'master', '--tags').on('end', done);
   }
 });
 
