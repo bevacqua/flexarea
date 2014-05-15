@@ -87,8 +87,10 @@ gulp.task('tag', ['build'], function (cb) {
 });
 
 gulp.task('npm', ['tag'], function (done) {
-  require('child_process').spawn('npm', ['publish'], { stdio: 'inherit' })
-    .on('close', done);
+  var child = require('child_process').exec('npm publish', {}, done);
+
+  child.stdout.pipe(process.stdout);
+  child.stderr.pipe(process.stderr);
 });
 
 gulp.task('release', ['npm']);
