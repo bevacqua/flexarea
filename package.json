@@ -13,7 +13,7 @@
     "type": "git",
     "url": "git://github.com/bevacqua/flexarea.git"
   },
-  "main": "flexarea.js",
+  "main": "src/flexarea.js",
   "devDependencies": {
     "browserify": "^4.1.3",
     "gulp": "^3.6.2",
