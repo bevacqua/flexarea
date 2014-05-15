@@ -87,9 +87,7 @@ gulp.task('tag', ['build'], function (done) {
 });
 
 gulp.task('npm', ['tag'], function (done) {
-  var child = require('child_process').exec('npm publish', {}, function () {
-    done();
-  });
+  var child = require('child_process').exec('npm publish', {});
 
   child.stdout.pipe(process.stdout);
   child.stderr.pipe(process.stderr);
