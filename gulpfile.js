@@ -69,7 +69,7 @@ gulp.task('bump', function () {
     .pipe(gulp.dest('./'));
 });
 
-gulp.task('tag', ['build'], function (cb) {
+gulp.task('tag', ['build'], function (done) {
   var pkg = require('./package.json');
   var v = 'v' + pkg.version;
   var message = 'Release ' + v;
@@ -82,19 +82,23 @@ gulp.task('tag', ['build'], function (cb) {
   function tag () {
     git.tag(v, message);
     git.push('origin', 'master', '--tags').end();
-    cb();
+    done();
   }
 });
 
 gulp.task('npm', ['tag'], function (done) {
-  var child = require('child_process').exec('npm publish', {});
+  var child = require('child_process').exec('npm publish', {}, function () {
+    done();
+  });
 
   child.stdout.pipe(process.stdout);
   child.stderr.pipe(process.stderr);
   child.on('error', function () {
     throw new Error('unable to publish');
   });
-  child.on('exit', done);
+  child.on('exit', function () {
+    done();
+  });
 });
 
 gulp.task('release', ['npm']);
