@@ -22,7 +22,7 @@ module.exports = function (textarea) {
     textarea.blur();
     textarea.classList.add('fa-textarea-resizing');
     position = getPosition(e).y;
-    offset = textarea.style.height - position;
+    offset = textarea.offsetHeight - position;
     doc.addEventListener('mousemove', move);
     doc.addEventListener('mouseup', end);
     return false;
