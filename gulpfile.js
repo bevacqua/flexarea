@@ -33,7 +33,7 @@ gulp.task('clean', function () {
     .pipe(clean());
 });
 
-gulp.task('build-css', ['bump'], function () {
+gulp.task('build-css', ['clean', 'bump'], function () {
   var pkg = require('./package.json');
 
   return gulp.src('./src/flexarea.styl')
