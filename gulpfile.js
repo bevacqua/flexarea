@@ -91,6 +91,9 @@ gulp.task('npm', ['tag'], function (done) {
 
   child.stdout.pipe(process.stdout);
   child.stderr.pipe(process.stderr);
+  child.on('error', function () {
+    throw new Error('unable to publish');
+  });
 });
 
 gulp.task('release', ['npm']);
