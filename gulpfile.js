@@ -69,7 +69,7 @@ gulp.task('bump', function () {
     .pipe(gulp.dest('./'));
 });
 
-gulp.task('tag', ['build'], function () {
+gulp.task('tag', ['build'], function (done) {
   var pkg = require('./package.json');
   var v = 'v' + pkg.version;
   var message = 'Release ' + v;
@@ -81,7 +81,7 @@ gulp.task('tag', ['build'], function () {
 
   function tag () {
     git.tag(v, message);
-    git.push('origin', 'master', '--tags').end();
+    git.push('origin', 'master', '--tags', done).end();
   }
 });
 
