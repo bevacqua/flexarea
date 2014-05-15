@@ -3,12 +3,15 @@
 var gulp = require('gulp');
 var bump = require('gulp-bump');
 var git = require('gulp-git');
-var jshint = require('gulp-jshint');
-var mocha = require('gulp-mocha');
 var clean = require('gulp-clean');
 var rename = require('gulp-rename');
 var header = require('gulp-header');
 var uglify = require('gulp-uglify');
+var stylus = require('gulp-stylus');
+var minifyCSS = require('gulp-minify-css');
+var browserify = require('browserify');
+var streamify = require('gulp-streamify');
+var source = require('vinyl-source-stream');
 var size = require('gulp-size');
 
 var extended = [
@@ -21,47 +24,40 @@ var extended = [
   ''
 ].join('\n');
 
-var succint = '// <%= pkg.name %>@v<%= pkg.version %>, <%= pkg.license %> licensed. <%= pkg.homepage %>\n';
-
-gulp.task('lint', function () {
-  return gulp.src('./src/*.js')
-    .pipe(jshint('.jshintrc'))
-    .pipe(jshint.reporter('jshint-stylish'));
-});
-
-gulp.task('mocha', function () {
-  gulp.src('./test/**/*.js')
-    .pipe(mocha({ reporter: 'list' }));
-});
+var succint = ' <%= pkg.name %>@v<%= pkg.version %>, <%= pkg.license %> licensed. <%= pkg.homepage %>';
+var succjs = '//' + succint + '\n';
+var succss = '/*' + succint + ' */\n';
 
 gulp.task('clean', function () {
-  return gulp.src('./dist', { read: false })
+  gulp.src('./dist', { read: false })
     .pipe(clean());
 });
 
-gulp.task('build-shim', ['bump', 'test', 'clean'], function () {
+gulp.task('build-css', ['bump'], function () {
   var pkg = require('./package.json');
 
-  return gulp.src('./src/contra.shim.js')
+  return gulp.src('./src/flexarea.styl')
+    .pipe(stylus())
     .pipe(header(extended, { pkg : pkg } ))
     .pipe(gulp.dest('./dist'))
-    .pipe(rename('contra.shim.min.js'))
-    .pipe(uglify())
-    .pipe(header(succint, { pkg : pkg } ))
-    .pipe(size())
+    .pipe(rename('flexarea.min.css'))
+    .pipe(minifyCSS())
+    .pipe(header(succss, { pkg : pkg } ))
     .pipe(gulp.dest('./dist'));
 });
 
-gulp.task('build', ['build-shim'], function () {
+gulp.task('build', ['build-css'], function () {
   var pkg = require('./package.json');
 
-  return gulp.src('./src/contra.js')
-    .pipe(header(extended, { pkg : pkg } ))
+  return browserify('./src/flexarea.js')
+    .bundle({ debug: true, standalone: 'flexarea' })
+    .pipe(source('flexarea.js'))
+    .pipe(streamify(header(extended, { pkg : pkg } )))
     .pipe(gulp.dest('./dist'))
-    .pipe(rename('contra.min.js'))
-    .pipe(uglify())
-    .pipe(header(succint, { pkg : pkg } ))
-    .pipe(size())
+    .pipe(streamify(rename('flexarea.min.js')))
+    .pipe(streamify(uglify()))
+    .pipe(streamify(header(succjs, { pkg : pkg } )))
+    .pipe(streamify(size()))
     .pipe(gulp.dest('./dist'));
 });
 
@@ -90,6 +86,4 @@ gulp.task('npm', ['tag'], function (done) {
     .on('close', done);
 });
 
-gulp.task('test', ['lint', 'mocha']);
-gulp.task('ci', ['build']);
 gulp.task('release', ['npm']);

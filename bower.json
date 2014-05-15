@@ -1,7 +1,7 @@
 {
   "name": "flexarea",
-  "description": "",
-  "version": "1.0.0",
+  "description": "Pretty flexible textareas",
+  "version": "1.0.6",
   "homepage": "https://github.com/bevacqua/flexarea",
   "author": {
     "name": "Nicolas Bevacqua",

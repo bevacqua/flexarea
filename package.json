@@ -1,7 +1,7 @@
 {
   "name": "flexarea",
-  "description": "",
-  "version": "1.0.0",
+  "description": "Pretty flexible textareas",
+  "version": "1.0.6",
   "homepage": "https://github.com/bevacqua/flexarea",
   "author": {
     "name": "Nicolas Bevacqua",
@@ -13,5 +13,19 @@
     "type": "git",
     "url": "git://github.com/bevacqua/flexarea.git"
   },
-  "main": "flexarea.js"
+  "main": "flexarea.js",
+  "devDependencies": {
+    "browserify": "^4.1.3",
+    "gulp": "^3.6.2",
+    "gulp-bump": "^0.1.8",
+    "gulp-clean": "^0.2.4",
+    "gulp-git": "^0.4.2",
+    "gulp-header": "^1.0.2",
+    "gulp-minify-css": "^0.3.4",
+    "gulp-size": "^0.3.1",
+    "gulp-streamify": "0.0.5",
+    "gulp-stylus": "^1.0.0",
+    "gulp-uglify": "^0.3.0",
+    "vinyl-source-stream": "^0.1.1"
+  }
 }
