@@ -87,15 +87,14 @@ gulp.task('tag', ['build'], function (done) {
 });
 
 gulp.task('npm', ['tag'], function (done) {
-  var child = require('child_process').exec('npm publish', {});
+  var child = require('child_process').exec('npm publish', {}, function () {
+    done();
+  });
 
   child.stdout.pipe(process.stdout);
   child.stderr.pipe(process.stderr);
   child.on('error', function () {
     throw new Error('unable to publish');
-  });
-  child.on('exit', function () {
-    done();
   });
 });
 
