@@ -1,6 +1,11 @@
 'use strict';
 
+var insertRule = require('./insertRule');
 var doc = document;
+var uid = 0;
+
+  background-color: #f3f4eb;
+  border-color: #dedede;
 
 module.exports = function (textarea) {
   var wrapper = doc.createElement('div');
@@ -8,6 +13,10 @@ module.exports = function (textarea) {
   var min = 32;
   var offset;
   var position;
+  var styles = window.getComputedStyle(textarea);
+  var gid = 'fa-grip-' + uid++;
+  var g = '.' + gid;
+  var gripSelector = [g, g + ':before', g + ':after'].join(',');
 
   textarea.classList.add('fa-textarea');
   textarea.parentNode.replaceChild(wrapper, textarea);
@@ -15,8 +24,14 @@ module.exports = function (textarea) {
   wrapper.appendChild(grip);
   wrapper.classList.add('fa-wrapper');
   grip.classList.add('fa-grip');
+  grip.classList.add(gid);
   grip.addEventListener('mousedown', start);
   grip.style.marginRight = (grip.offsetWidth - textarea.offsetWidth) + 'px';
+
+  insertRule(gripSelector, {
+    backgroundColor: styles.backgroundColor,
+    borderColor: styles.borderColor
+  });
 
   function start (e) {
     textarea.blur();
