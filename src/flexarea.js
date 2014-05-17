@@ -1,6 +1,6 @@
 'use strict';
 
-var insertRule = require('./insertRule');
+var insertRule = require('insert-rule');
 var doc = document;
 var uid = 0;
 
