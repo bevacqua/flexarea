@@ -1,6 +1,6 @@
 /**
  * flexarea - Pretty flexible textareas
- * @version v1.1.1
+ * @version v1.1.2
  * @link https://github.com/bevacqua/flexarea
  * @license MIT
  */
