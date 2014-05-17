@@ -25,7 +25,7 @@ var textarea = document.querySelector('textarea');
 flexarea(textarea);
 ```
 
-You'll get a nice little resizer. Remember to include the CSS in your styles!
+You'll get a nice little resizer. Remember to include the CSS in your styles! Colors get copied from the `<textarea>`.
 
 ![flexarea.png][1]
 

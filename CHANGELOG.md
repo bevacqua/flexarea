@@ -1,3 +1,7 @@
+# v1.1.0
+
+- Colors get copied from the `<textarea>`
+
 # v1.0.24
 
 - Styling changes
