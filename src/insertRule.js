@@ -23,8 +23,8 @@ module.exports = function (selector, styles) {
   var sheet = document.styleSheets[document.styleSheets.length - 1];
   var key = sheet.cssRules ? sheet.cssRules: sheet.rules;
   if (sheet.insertRule) {
-    sheet.insertRule(sel + '{' + css + '}', key.length);
+    sheet.insertRule(selector + '{' + css + '}', key.length);
   } else if (sheet.addRule) {
-    sheet.addRule(sel, css, key.length);
+    sheet.addRule(selector, css, key.length);
   }
 };
