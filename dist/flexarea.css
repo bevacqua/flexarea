@@ -1,12 +1,14 @@
 /**
  * flexarea - Pretty flexible textareas
- * @version v1.0.26
+ * @version v1.0.27
  * @link https://github.com/bevacqua/flexarea
  * @license MIT
  */
 .fa-grip,
 .fa-grip:before,
 .fa-grip:after {
+  background-color: #f3f4eb;
+  border-color: #dedede;
   border-style: solid;
   border-width: 0pt 1px 1px;
   cursor: s-resize;

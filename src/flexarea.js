@@ -4,9 +4,6 @@ var insertRule = require('./insertRule');
 var doc = document;
 var uid = 0;
 
-  background-color: #f3f4eb;
-  border-color: #dedede;
-
 module.exports = function (textarea) {
   var wrapper = doc.createElement('div');
   var grip = doc.createElement('div');
