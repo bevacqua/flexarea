@@ -2,6 +2,8 @@
 
 > Pretty flexible `<textarea>`s
 
+[See the demo!][2]
+
 # Install
 
 Using Bower
@@ -27,7 +29,7 @@ flexarea(textarea);
 
 You'll get a nice little resizer. Remember to include the CSS in your styles! Colors get copied from the `<textarea>`.
 
-![flexarea.png][1]
+[![flexarea.png][1]][2]
 
 If you want to set a maximum height for your `<textarea>`, you should use the `max-height` CSS property. It'll work just fine!
 
@@ -35,4 +37,5 @@ If you want to set a maximum height for your `<textarea>`, you should use the `m
 
 MIT
 
-  [1]: http://i.imgur.com/ZWpAHu1.png
+  [1]: http://i.imgur.com/33niY7s.png
+  [2]: http://codepen.io/bevacqua/full/haxGk/
