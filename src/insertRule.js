@@ -13,9 +13,9 @@ function parseStyles (styles) {
   if (Object.prototype.toString.call(styles) !== '[object Object]') {
     return '';
   }
-  return Object.keys(styles).map(function (value, key) {
+  return Object.keys(styles).map(function (key) {
     var prop = key.replace(camel, hyphens).toLowerCase();
-    return prop + ':' + value;
+    return prop + ':' + styles[key];
   }).join(';');
 }
 module.exports = function (selector, styles) {
