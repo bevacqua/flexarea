@@ -1,3 +1,7 @@
+# v1.3.0 Cursed Scroll
+
+- Use `grab` and `grabbing` cursors where available.
+
 # v1.2.0 Bumpy Road
 
 - Bump `insert-rule` to `2.1.0`

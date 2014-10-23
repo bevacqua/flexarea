@@ -9,7 +9,15 @@ c-gray = #dedede
   border-style solid
   border-width 0pt 1px 1px
   cursor s-resize
+  cursor grab
+  cursor -webkit-grab
   overflow hidden
+
+  &:active,
+  &:focus
+    cursor s-resize
+    cursor grabbing
+    cursor -webkit-grabbing
 
 .fa-grip
   height 9px
