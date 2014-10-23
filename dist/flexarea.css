@@ -1,6 +1,6 @@
 /**
  * flexarea - Pretty flexible textareas
- * @version v1.3.0
+ * @version v1.3.1
  * @link https://github.com/bevacqua/flexarea
  * @license MIT
  */
@@ -15,16 +15,6 @@
   cursor: grab;
   cursor: -webkit-grab;
   overflow: hidden;
-}
-.fa-grip:active,
-.fa-grip:before:active,
-.fa-grip:after:active,
-.fa-grip:focus,
-.fa-grip:before:focus,
-.fa-grip:after:focus {
-  cursor: s-resize;
-  cursor: grabbing;
-  cursor: -webkit-grabbing;
 }
 .fa-grip {
   height: 9px;
@@ -41,4 +31,7 @@
 }
 .fa-textarea-resizing {
   opacity: 0.75;
+  cursor: s-resize;
+  cursor: grabbing;
+  cursor: -webkit-grabbing;
 }

@@ -1,4 +1,4 @@
-# v1.3.0 Cursed Scroll
+# v1.3.1 Cursed Scroll
 
 - Use `grab` and `grabbing` cursors where available.
 
